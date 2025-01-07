@@ -5,15 +5,15 @@ const router = Router();
 
 // router.route("/register").post(registerUser);
 router.post("/register",
-    upload.fields(
+    upload.fields([
         {
-            name: "avtar",
+            name: "avatar",
             maxCount:1
         },
         {
             name: "coverImage",
             maxCount: 1
-        }
+        }]
     ),
     registerUser);
 
