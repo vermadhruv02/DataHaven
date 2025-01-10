@@ -9,7 +9,8 @@ import { registerUser,
     getUser,
     updateUserDetails,
     updateAvatar,
-    updateCoverImage, } from "../controllers/user.controllers.js";
+    updateCoverImage,
+    getChannel, } from "../controllers/user.controllers.js";
 
 
 const router = Router();
@@ -45,6 +46,9 @@ router.post("/updateCoverImage",
     upload.single("coverImage"), 
     updateCoverImage
 );
+
+router.post("/getChannel/:username", verifyJWT, getChannel);
+
 
 
 export default router;
