@@ -10,7 +10,8 @@ import { registerUser,
     updateUserDetails,
     updateAvatar,
     updateCoverImage,
-    getChannel, } from "../controllers/user.controllers.js";
+    getChannel,
+    getWatchHistory } from "../controllers/user.controllers.js";
 
 
 const router = Router();
@@ -34,21 +35,21 @@ router.post("/logout", verifyJWT, logoutUser);
 router.post("/refreshToken", refreshAccessToken);
 router.post("/changePassword", verifyJWT, changePassword);
 router.get("/getUser", verifyJWT, getUser);
-router.post("/updateUserDetails", verifyJWT, updateUserDetails);
-router.post("/updateAvatar", 
+router.patch("/updateUserDetails", verifyJWT, updateUserDetails);
+router.patch("/updateAvatar", 
     verifyJWT, 
     upload.single("avatar"), 
     updateAvatar
 );
 
-router.post("/updateCoverImage", 
+router.patch("/updateCoverImage", 
     verifyJWT, 
     upload.single("coverImage"), 
     updateCoverImage
 );
 
-router.post("/getChannel/:username", verifyJWT, getChannel);
+router.get("/getChannel/:username", verifyJWT, getChannel);
 
-
+router.get("/history", verifyJWT, getWatchHistory);
 
 export default router;
